@@ -49,7 +49,7 @@ namespace barcodeapp.Droid
                     MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory);
                 if (user != null)
                 {
-                    message = string.Format("you are now signed-in as {0}.",
+                    message = string.Format("You are now signed-in as {0}.",
                         user.UserId);
                     success = true;
                 }

@@ -19,7 +19,7 @@ namespace barcodeapp
 
             var titleLabel = new Label
             {
-                Text = "Nume: " + item.Name,
+                Text = "Name: " + item.Name,
                 Font = Font.SystemFontOfSize(NamedSize.Large)
             };
             //titleLabel.SetBinding(Label.TextProperty, "Name");
@@ -27,21 +27,21 @@ namespace barcodeapp
 
             var descriptionLabel = new Label
             {
-                Text = "Descriere: " + item.Description,
+                Text = "Description: " + item.Description,
                 Font = Font.SystemFontOfSize(NamedSize.Medium)
             };
             //descriptionLabel.SetBinding(Label.TextProperty, "Description");
 
             var priceLabel = new Label
             {
-                Text = "Pret: " + item.Price.ToString(),
+                Text = "Price: " + item.Price.ToString(),
                 Font = Font.SystemFontOfSize(NamedSize.Medium)
             };
             //priceLabel.SetBinding(Label.TextProperty, "Price");
 
             var barcodeLabel = new Label
             {
-                Text = "Cod: " + item.Code,
+                Text = "Code: " + item.Code,
                 Font = Font.SystemFontOfSize(NamedSize.Medium)
             };
             //barcodeLabel.SetBinding(Label.TextProperty, "Code");
@@ -49,7 +49,7 @@ namespace barcodeapp
 
             var stockLabel = new Label
             {
-                Text = "Stoc disponibil: " + item.Stock.ToString() + " buc",
+                Text = "Available stock: " + item.Stock.ToString() + " items",
                 Font = Font.SystemFontOfSize(NamedSize.Medium)
             };
             //stockLabel.SetBinding(Label.TextProperty, "Stock");
@@ -57,7 +57,7 @@ namespace barcodeapp
 
             var sizeLabel = new Label
             {
-                Text = "Marime: " + item.Size,
+                Text = "Size: " + item.Size,
                 Font = Font.SystemFontOfSize(NamedSize.Medium)
             };
             //sizeLabel.SetBinding(Label.TextProperty, "Size");

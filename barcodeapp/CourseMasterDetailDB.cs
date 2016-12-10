@@ -13,9 +13,10 @@ namespace barcodeapp
     {
         TodoItemManager manager;
         ListView list = new ListView();
-        Button addButton = new Button { Text = "Adauga produs", IsEnabled = false };
-        Button findButton = new Button { Text = "Cauta produs", IsEnabled = false };
+        Button addButton = new Button { Text = "Add product", IsEnabled = false };
+        Button findButton = new Button { Text = "Find product info", IsEnabled = false };
         ObservableCollection<TodoItem> items;
+        ZXingScannerPage scanPage;
 
         protected override async void OnAppearing()
         {
@@ -24,6 +25,7 @@ namespace barcodeapp
             list.ItemsSource = items;
             list.ItemTapped += List_ItemTapped;
             addButton.IsEnabled = true;
+            findButton.IsEnabled = true;
         }
 
         private void List_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -33,25 +35,14 @@ namespace barcodeapp
 
         public CourseMasterDetailDB()
         {
+            Title = "Products";
             manager = TodoItemManager.DefaultManager;
             addButton.Clicked += (o, e) =>
             { Navigation.PushAsync(new AddProductPage()); };
 
-            var scanPage = new ZXingScannerPage();
+            scanPage = new ZXingScannerPage();
 
-            scanPage.OnScanResult += (result) => {
-                // Stop scanning
-                scanPage.IsScanning = false;
-
-                // Pop the page and show the result
-                Device.BeginInvokeOnMainThread(() => {
-                    Navigation.PopAsync();
-                    //DisplayAlert("Scanned Barcode", result.Text, "OK");
-                    //entryBarcode.Text = result.Text;
-                    TodoItem itm = manager.FindProduct(result.Text).Result;
-                    Navigation.PushAsync(new CoursePageDB(itm));
-                });
-            };
+            scanPage.OnScanResult += ScanPage_OnScanResult;
 
             findButton.Clicked += (o, e) =>
             {
@@ -65,5 +56,19 @@ namespace barcodeapp
             };
         }
 
+        private async void ScanPage_OnScanResult(ZXing.Result result)
+        {
+
+                scanPage.IsScanning = false;
+
+                // Pop the page and show the result
+                Device.BeginInvokeOnMainThread(async () => {
+                    Navigation.PopAsync();
+                    //DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    //entryBarcode.Text = result.Text;
+                    TodoItem itm = await manager.FindProduct(result.Text);
+                    Navigation.PushAsync(new CoursePageDB(itm));
+                });
+        }
     }
 }

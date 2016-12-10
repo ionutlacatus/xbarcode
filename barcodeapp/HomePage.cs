@@ -27,7 +27,7 @@ namespace barcodeapp
         {
             manager = TodoItemManager.DefaultManager;
             Padding = new Thickness(10, Device.OnPlatform(20, 0, 0), 10, 0);
-            Title = "Pages";
+            Title = "XBarCode";
 
             var button3 = new Button { Text = "Login with Azure AD" };
             button3.Clicked += loginButton_Clicked;
