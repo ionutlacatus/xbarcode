@@ -23,7 +23,12 @@ namespace barcodeapp
                 doneButton.IsEnabled = false;
                 TodoItem itemToAdd = new TodoItem
                 {
-                    Name = entryName.Text
+                    Name = entryName.Text,
+                    Description = entryDescription.Text,
+                    Size = entrySize.Text,
+                    Stock = Int32.Parse(entryStock.Text),
+                    Price = Int32.Parse(entryPrice.Text),
+                    Code = entryBarcode.Text
                 };
                 manager.SaveTaskAsync(itemToAdd, () => {
                     Navigation.PushAsync(new CourseMasterDetailDB());
@@ -41,7 +46,8 @@ namespace barcodeapp
                 // Pop the page and show the result
                 Device.BeginInvokeOnMainThread(() => {
                     Navigation.PopAsync();
-                    DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    //DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    entryBarcode.Text = result.Text;
                 });
             };
 

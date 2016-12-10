@@ -65,6 +65,15 @@ namespace barcodeapp
             }
         }
 
+        public async Task<TodoItem> FindProduct(string text)
+        {
+            var items =await  todoTable
+                    .Where(todoItem => todoItem.Code == text)
+                    .ToEnumerableAsync();
+
+            return items.SingleOrDefault();
+        }
+
         public MobileServiceClient CurrentClient
         {
             get { return client; }

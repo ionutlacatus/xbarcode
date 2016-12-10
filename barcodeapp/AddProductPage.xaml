@@ -11,12 +11,28 @@
 
       <StackLayout Orientation="Horizontal" Spacing="5">
         <Label Text="Description" Font="Large" VerticalOptions="End"/>
-        <Entry x:Name="Description" HorizontalOptions="FillAndExpand"/>
+        <Entry x:Name="entryDescription" HorizontalOptions="FillAndExpand"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Horizontal" Spacing="5">
+        <Label Text="Price" Font="Large" VerticalOptions="End"/>
+        <Entry x:Name="entryPrice" HorizontalOptions="FillAndExpand"/>
+      </StackLayout>
+
+
+      <StackLayout Orientation="Horizontal" Spacing="5">
+        <Label Text="Stock" Font="Large" VerticalOptions="End"/>
+        <Entry x:Name="entryStock" HorizontalOptions="FillAndExpand"/>
+      </StackLayout>
+
+      <StackLayout Orientation="Horizontal" Spacing="5">
+        <Label Text="Size" Font="Large" VerticalOptions="End"/>
+        <Entry x:Name="entrySize" HorizontalOptions="FillAndExpand"/>
       </StackLayout>
 
       <StackLayout Orientation="Horizontal" Spacing="5">
         <Label Text="Barcode" Font="Large" VerticalOptions="End"/>
-        <Entry x:Name="Barcode" HorizontalOptions="FillAndExpand"/>
+        <Entry x:Name="entryBarcode" HorizontalOptions="FillAndExpand"/>
         <Button Text="Scan"
               x:Name="scanButton" />
       </StackLayout>
